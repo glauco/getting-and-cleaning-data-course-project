@@ -32,7 +32,7 @@ saveTidyData(summarizedData)
 
 ## What do I need to run this?
 
-First of all, only need to have R installed on your computer.
+First of all, you need to have R installed on your computer.
 
 If you are running Mac OS X, you can easily install it using Homebrew:
 ```
