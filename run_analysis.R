@@ -225,10 +225,10 @@ summarizeMeasurements <- function(relevantMeasurements) {
     return(summarizedData)
 }
 
-saveTidyData <- function(summarizedData, destfile = "data/tidy.csv") {
+saveTidyData <- function(summarizedData, destfile = "data/tidy.txt") {
     # Stores tidy dataset on disk.
     # By default, stores it at 'data/tidy.csv'
-    write.csv(summarizedData, file = destfile)
+    write.table(summarizedData, file = destfile, row.name = FALSE)
 }
 
 activities <- getActivities()
