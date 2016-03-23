@@ -23,7 +23,7 @@ getTrainingData <- function(activities = getActivities) {
     #   - subjectID
     #   - activityID
     #   - activityName
-    #   - 561 unamed observations
+    #   - 561 unnamed observations
     getTrainingSubjects <- function() {
         # Reads subjects that were part of the training.
         # The information is read as a data.table object.
@@ -71,7 +71,7 @@ getTestData <- function(activities = getActivities) {
     #   - subjectID
     #   - activityID
     #   - activityName
-    #   - 561 unamed observations
+    #   - 561 unnamed observations
     getTestSubjects <- function() {
         # Reads subjects that were part of the test.
         # The information is read as a data.table object.
@@ -119,7 +119,7 @@ consolidateData <- function(trainingData, testData) {
     #   - subjectID
     #   - activityID
     #   - activityName
-    #   - 561 unamed observations
+    #   - 561 unnamed observations
     consolidatedData <- merge(trainingData, testData,
                               by = names(trainingData),
                               all = TRUE)
@@ -127,8 +127,7 @@ consolidateData <- function(trainingData, testData) {
 }
 
 extractRelevantMeasurements <- function(consolidateData) {
-    # Extracts only the measurements on the mean and standard deviation
-    #  for each measurement.
+    # Extracts only measurements related to mean and standard deviation.
     # The information is read as a data.table object.
     # The data.table object will contain the following columns:
     #   - subjectID
