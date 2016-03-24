@@ -132,7 +132,7 @@ extractRelevantMeasurements <- function(consolidateData) {
     # The data.table object will contain the following columns:
     #   - subjectID
     #   - activityName
-    #   - 87 observations related to mean and standard deviation
+    #   - 66 observations related to mean and standard deviation
     getObservationNames <- function() {
         # Reads the kind of observations performed during this experiment.
         # The information is read as a data.table object.
@@ -157,11 +157,11 @@ extractRelevantMeasurements <- function(consolidateData) {
         observationNames$observationName <- gsub("-Z",
                                                  "InZAxis",
                                                  observationNames$observationName)
-        observationNames$observationName <- gsub("mean",
+        observationNames$observationName <- gsub("mean\\(\\)",
                                                  "MeanValue",
                                                  observationNames$observationName,
                                                  ignore.case = TRUE)
-        observationNames$observationName <- gsub("std",
+        observationNames$observationName <- gsub("std\\(\\)",
                                                  "StandardDeviation",
                                                  observationNames$observationName,
                                                  ignore.case = TRUE)
@@ -198,7 +198,7 @@ extractRelevantMeasurements <- function(consolidateData) {
         # The data.table object will contain the following columns:
         #   - subjectID
         #   - activityName
-        #   - 87 observations related to mean and standard deviation
+        #   - 66 observations related to mean and standard deviation
         filteredData <- select(consolidatedData,
                                matches("subjectID"),
                                matches("activityName"),
@@ -218,7 +218,7 @@ summarizeMeasurements <- function(relevantMeasurements) {
     # The data.table object will contain the following columns:
     #   - subjectID
     #   - activityName
-    #   - 87 summarized observations related to mean and standard deviation
+    #   - 66 summarized observations related to mean and standard deviation
     summarizedData <- relevantMeasurements %>%
                         group_by(activityName, subjectID) %>%
                         summarise_each(funs(mean))
@@ -239,3 +239,4 @@ consolidatedData <- consolidateData(trainingData, testData)
 relevantMeasurements <- extractRelevantMeasurements(consolidatedData)
 summarizedData <- summarizeMeasurements(relevantMeasurements)
 saveTidyData(summarizedData)
+length(summarizedData)
